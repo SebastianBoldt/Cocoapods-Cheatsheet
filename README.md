@@ -25,9 +25,9 @@ Useful commands etc. for Cocoapods
 
 | Command | Description |
 | ----------- | ----------- |
-| pod search | Searches for pods, ignoring case, whose name, summary, description, or authors match QUERY. If the --simple option is specified, this will only search in the names of the pods. |
+| pod search QUERY | Searches for pods, ignoring case, whose name, summary, description, or authors match QUERY. If the --simple option is specified, this will only search in the names of the pods. |
 | pod list | Lists all available pods. |
-| pod try | Downloads the Pod with the given NAME (or Git URL), install its dependencies if needed and opens its demo project. If a Git URL is provided the head of the repo is used. If a Git URL is specified, then a --podspec_name can be provided, if the podspec name is different than the git repo for some reason. |
+| pod try NAME\|URL | Downloads the Pod with the given NAME (or Git URL), install its dependencies if needed and opens its demo project. If a Git URL is provided the head of the repo is used. If a Git URL is specified, then a --podspec_name can be provided, if the podspec name is different than the git repo for some reason. |
 
 ### Specifations
 
@@ -51,4 +51,17 @@ Useful commands etc. for Cocoapods
 | pod trunk remove-owner POD OWNER-EMAIL | Removes the user with specified OWNER-EMAIL from being an owner of the given POD. An ‘owner’ is a registered user whom is allowed to make changes to a pod, such as pushing new versions and adding and removing other ‘owners’. |
 | pod trunk deprecate NAME | Deprecates a pod. |
 | pod trunk delete NAME VERSION | *WARNING*: It is generally considered bad behavior to remove versions of a Pod that others are depending on! Please consider using the deprecate command instead. Deletes the specified pod version from trunk and the master specs repo. Once deleted, this version can never be pushed again. |
+
+### Repos
+
+| Command | Description |
+| ----------- | ----------- |
+| pod repo add NAME URL [BRANCH] | Clones URL in the local spec-repos directory at ~/.cocoapods/repos/. The remote can later be referred to by NAME. |
+| pod repo update [NAME] | Updates the local clone of the spec-repo NAME. If NAME is omitted this will update all spec-repos in ~/.cocoapods/repos. |
+| pod repo lint [NAME\|DIRECTORY] | Lints the spec-repo NAME. If a directory is provided it is assumed to be the root of a repo. Finally, if NAME is not provided this will lint all the spec-repos known to CocoaPods. |
+| pod repo list  | List the repos from the local spec-repos directory at ~/.cocoapods/repos/. |
+| pod repo remove NAME | Deletes the remote named NAME from the local spec-repos directory at ~/.cocoapods/repos/. |
+| pod repo push REPO [NAME.podspec] | Validates NAME.podspec or \*.podspec in the current working dir, creates a directory and version folder for the pod in the local copy of REPO (~/.cocoapods/repos/[REPO]), copies the podspec file into the version directory, and finally it pushes REPO to its remote. |
+| pod setup  | Creates a directory at ~/.cocoapods/repos which will hold your spec-repos. This is where it will create a clone of the public master spec-repo from: https://github.com/CocoaPods/Specs If the clone already exists, it will ensure that it is up-to-date. |
+
 
