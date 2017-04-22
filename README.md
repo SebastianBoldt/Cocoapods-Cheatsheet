@@ -13,6 +13,14 @@ Useful commands etc. for Cocoapods
 | pod deintegrate | Deintegrate your project from CocoaPods. Removing all traces of CocoaPods from your Xcode project.If no xcodeproj is specified, then a search for an Xcode project will be made in the current directory. |
 | pod env | Display pod environment. |
 
+### Create a new Cocoapod
+
+| Command | Description |
+| ----------- | ----------- |
+| pod lib create pod_name | creates a new pod project for you |
+| pod trunk push pod_name.podspec | push podspec to the trunk |
+| pod spec create pod_name | creates podspec template for you |
+
 ### Browse
 
 | Command | Description |
@@ -31,11 +39,17 @@ Useful commands etc. for Cocoapods
 | pod spec which [QUERY] | Prints the path of the .podspec file(s) whose name matches QUERY |
 | pod spec edit [QUERY] | Opens the podspec matching QUERY to be edited. |
 
-
-### Create a new Cocoapod
+### Trunk
 
 | Command | Description |
 | ----------- | ----------- |
-| pod lib create pod_name | creates a new pod project for you |
-| pod trunk push pod_name.podspec | push podspec to the trunk |
-| pod spec create pod_name | creates podspec template for you |
+| pod trunk add-owner POD OWNER-EMAIL | Adds the registered user with specified OWNER-EMAIL as an owner of the given POD. An ‘owner’ is a registered user whom is allowed to make changes to a pod, such as pushing new versions and adding and removing other ‘owners’. |
+| pod trunk info NAME | Returns information about a Pod. |
+| pod trunk me | Includes information about your registration, followed by all your sessions.These are your current session, other valid sessions, unverified sessions, and expired sessions. |
+| pod trunk push [PATH] | Publish the podspec at PATH to make it available to all users of the ‘master’ spec-repo. If PATH is not provided, defaults to the current directory.Before pushing the podspec to cocoapods.org, this will perform a local lint of the podspec, including a build of the library. However, it remains your responsibility to ensure that the published podspec will actually work for your users. Thus it is recommended that you first try to use the podspec to integrate the library into your demo and/or real application.
+If this is the first time you publish a spec for this pod, you will automatically be registered as the ‘owner’ of this pod. (Note that ‘owner’ in this case implies a person that is allowed to publish new versions and add other ‘owners’, not necessarily the library author.) |
+| pod trunk register EMAIL [NAME] | Register a new account, or create a new session.If this is your first registration, both an EMAIL address and your NAME are required. If you’ve already registered with trunk, you may omit the NAME (unless you would like to change it).It is recommended that you provide a description of the session, so that it will be easier to identify later on. For instance, when you would like to clean-up your sessions. A common example is to specify the location where the machine, that you are using the session for, is physically located. |
+| pod trunk remove-owner POD OWNER-EMAIL | Removes the user with specified OWNER-EMAIL from being an owner of the given POD. An ‘owner’ is a registered user whom is allowed to make changes to a pod, such as pushing new versions and adding and removing other ‘owners’. |
+| pod trunk deprecate NAME | Deprecates a pod. |
+| pod trunk delete NAME VERSION | *WARNING*: It is generally considered bad behavior to remove versions of a Pod that others are depending on! Please consider using the deprecate command instead. Deletes the specified pod version from trunk and the master specs repo. Once deleted, this version can never be pushed again. |
+
