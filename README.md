@@ -25,7 +25,7 @@ Useful commands etc. for Cocoapods
 
 | Command | Description |
 | ----------- | ----------- |
-| pod spec create [NAME|https://github.com/USER/REPO] | Creates a PodSpec, in the current working dir, called NAME.podspec. If a GitHub url is passed the spec is prepopulated. |
+| pod spec create [NAME\|https://github.com/USER/REPO] | Creates a PodSpec, in the current working dir, called NAME.podspec. If a GitHub url is passed the spec is prepopulated. |
 | pod spec lint [NAME.podspec|DIRECTORY|http://PATH/NAME.podspec ...] | Validates NAME.podspec. If a DIRECTORY is provided, it validates the podspec files found, including subfolders. In case the argument is omitted, it defaults to the current working dir. |
 | pod spec cat [QUERY] | Prints the content of the podspec(s) whose name matches QUERY to standard output. |
 | pod spec which [QUERY] | Prints the path of the .podspec file(s) whose name matches QUERY |
